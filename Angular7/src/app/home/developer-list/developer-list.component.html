@@ -1,0 +1,28 @@
+<label>Developer List</label>
+<table class="table table-hover">
+    <thead class="thead-light">
+        <th>Name</th>
+        <th colspan="2">
+            <a class="btn btn-outline-success" (click)="AddDeveloper()"><i class="fa fa-plus-square"></i> Add Developer</a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngIf="DeveloperList == undefined">
+            <td class="font-italic text-center" colspan="4">
+                No developers.
+            </td>
+        </tr>
+        <tr *ngFor="let item of DeveloperList">
+            <th draggable="true">{{item.name}}</th>
+            <td>
+                <a class="btn text-success" (click)="onEditDeveloper(item.id)"><i class="fa fa-pencil fa-lg"></i></a>
+            </td>
+            <td>
+                <a class="btn text-danger" (click)="onDeveloperDelete(item.id)"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+            <td>
+                <a class="btn text-primary" (click)="onToProject(item.id)"><i class="fa fa-reply fa-lg"></i> To Project</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

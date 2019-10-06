@@ -1,0 +1,25 @@
+<label>Project List</label>
+<table class="table table-hover">
+    <thead class="thead-light">
+        <th>Project</th>
+        <th colspan="2">
+            <a class="btn btn-outline-success" (click)="AddProject()"><i class="fa fa-plus-square"></i> Add Project</a>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngIf="ProjectList == undefined">
+            <td class="font-italic text-center" colspan="3">
+                No projects.
+            </td>
+        </tr>
+        <tr *ngFor="let item of ProjectList">
+            <th (click)="onProjectSelect(item.id)">{{item.projectTitle}}</th>
+            <td>
+                <a class="btn text-success" (click)="onEditProject(item.id)"><i class="fa fa-pencil fa-lg"></i></a>
+            </td>
+            <td>
+                <a class="btn text-danger" (click)="onProjectDelete(item.id)"><i class="fa fa-trash fa-lg"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

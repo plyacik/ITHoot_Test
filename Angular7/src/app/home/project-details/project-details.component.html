@@ -1,0 +1,34 @@
+<div>
+    <label class="col-form-label">Project: {{selectPrj}}</label>
+</div>
+
+<div>
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <th>Developer</th>
+        </thead>
+        <tbody>
+            <tr *ngIf="DeveloperList.length == 0">
+                <td class="font-italic text-center" colspan="2">
+                    No developers.
+                </td>
+            </tr>
+            <tr *ngFor="let item of DeveloperList">
+                <th>{{item.name}}</th>
+                <td>
+                    <a class="btn text-danger" (click)="onDeveloperDelete(item.id)"><i
+                            class="fa fa-trash fa-lg"></i></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <app-project-list (onChanged)="onChanged($event)"></app-project-list>
+    </div>
+    <div class="col-md-6">
+        <app-developer-list (onDevToProject)="onDevToProject($event)"></app-developer-list>
+    </div>
+</div>
